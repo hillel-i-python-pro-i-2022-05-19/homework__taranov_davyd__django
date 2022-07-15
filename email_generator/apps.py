@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PasswordGeneratorConfig(AppConfig):
+class EmailGeneratorConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'password_generator'
+    name = 'email_generator'
