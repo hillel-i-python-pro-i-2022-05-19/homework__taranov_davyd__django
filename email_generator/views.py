@@ -1,6 +1,10 @@
 from django.http import HttpResponse
 
+<<<<<<< HEAD
 from email_generator.utils import generator_email
+=======
+from email_generator.services import generator_email
+>>>>>>> 0cf6499 (:dizzy: Add email-generator)
 
 
 def email_generator(request, amount: int = 100):
