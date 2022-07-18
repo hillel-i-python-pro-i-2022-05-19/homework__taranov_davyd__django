@@ -1,11 +1,10 @@
 from django.http import HttpResponse
 
-from email_generator.services import emails_generator
+from email_generator.services import users_generator
 
 
-def email_generator(amount: int = 5):
-    email_list = emails_generator(amount)
-    formatted_users_list = [f"""<li>{user} {str(user).lower()}@mail.com</li>""" for user in email_list]
-    new_users = ''.join(formatted_users_list)
-    return HttpResponse(f'''<h1> New emails: {len(formatted_users_list)}</h1>
+def emails_generator(request, amount: int = 100):
+    user_as_list = users_generator(amount)
+    new_users = ''.join(f'''<li>{user.name} {user.email}</li>''' for user in user_as_list)
+    return HttpResponse(f'''<h1> New emails: {new_users.count('@')} </h1>
 <ul>{new_users}</ul>''')
