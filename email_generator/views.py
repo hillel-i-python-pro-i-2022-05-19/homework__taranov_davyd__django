@@ -1,10 +1,9 @@
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse
 
-from email_generator.services import users_generator
+from password_generator.services import generate_password
 
 
-def emails_generator(request: HttpRequest, amount: int = 100) -> HttpResponse:
-    user_as_list = users_generator(amount)
-    new_users = ''.join(f'''<li>{user.name} {user.email}</li>''' for user in user_as_list)
-    return HttpResponse(f'''<h1> New emails: {new_users.count('@')} </h1>
-<ul>{new_users}</ul>''')
+def password_generator(request, password_length: int = 10):
+    password = generate_password(password_length=password_length)
+    return HttpResponse(f"""<p>Length of password: {len(password)}</p>
+<p>{password}</p>""")
