@@ -39,6 +39,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'password_generator',
+    'email_generator',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
