@@ -38,7 +38,6 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'password_generator',
     'email_generator',
 ]
 
