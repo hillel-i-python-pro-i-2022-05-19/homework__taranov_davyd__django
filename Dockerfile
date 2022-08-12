@@ -23,5 +23,3 @@ COPY --chown=${USER} ./core core
 COPY --chown=${USER} ./email_generator email_generator
 
 USER ${USER}
-
-#ENTRYPOINT ["python", "manage.py"]
