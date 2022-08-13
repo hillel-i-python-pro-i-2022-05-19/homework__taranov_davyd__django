@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 
-from password_generator.services import generate_password
+from apps.password_generator.services import generate_password
 
 
 def password_generator(request, password_length: int = 10):
