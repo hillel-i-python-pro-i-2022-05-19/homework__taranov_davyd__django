@@ -39,10 +39,14 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
+    'apps.base',
     'apps.password_generator',
+    'apps.humans'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+THIRD_PARTY_APPS = []
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +86,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR.joinpath('db','db.sqlite3')),
+        'NAME': str(BASE_DIR.joinpath('db', 'db.sqlite3')),
     }
 }
 
