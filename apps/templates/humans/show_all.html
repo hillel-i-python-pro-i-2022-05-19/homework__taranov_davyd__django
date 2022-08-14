@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+
+{% block body %}
+    <a href="{% url 'humans:create' %}">
+        <button class="btn btn-primary">Go to human creation</button>
+    </a>
+    <ol>
+        {% for human in humans %}
+            <li style="margin: 10px 0; ">
+                <div style="max-width: 300px; display: flex; align-items: center; justify-content: space-between">
+                    <span>{{ human.name }} - {{ human.age }}</span>
+                    <a href="{% url 'humans:edit' pk=human.pk %}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                    <a href="{% url 'humans:delete' pk=human.pk %}">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

@@ -1,0 +1,23 @@
+<header>
+    <nav>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'password_generator:index' %}">Password generator</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'humans:show_all' %}">Humans</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<style>
+    .nav {
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
