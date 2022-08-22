@@ -24,7 +24,7 @@ class Human(models.Model):
     favourite_color = models.CharField(
         "Favourite color", max_length=35,
         choices=ColorsChoices.choices,
-        default=ColorsChoices.WHITE
+        default=ColorsChoices.WHITE,
     )
     favourite_color_by_foreign = models.ForeignKey(
         Color,
