@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator
 from django.db import models
+from django.urls import reverse_lazy
 
 
 class ColorsChoices(models.TextChoices):
@@ -46,12 +47,8 @@ class Human(models.Model):
 
     __repr__ = __str__
 
-    # def __repr__(self)->str:
-    #     return str(self)
-
-    # def save(
-    #     self, force_insert=False, force_update=False, using=None, update_fields=None
-    # ):
+    def get_absolute_url(self):
+        return reverse_lazy('humans:edit', kwargs={"pk": self.pk})
 
 
 class SuperHuman(Human):
