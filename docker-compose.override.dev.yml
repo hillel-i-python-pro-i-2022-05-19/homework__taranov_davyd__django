@@ -4,4 +4,7 @@ version: '3.9'
 services:
   app:
     ports:
-      - "8000:8000"
+      - "48000:8000"
+  postgres:
+    ports:
+      - "5432:5432"
