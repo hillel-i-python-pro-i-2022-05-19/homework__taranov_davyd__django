@@ -4,10 +4,15 @@ from . import views
 
 app_name = "humans"
 urlpatterns = [
-    path('', views.HumanListView.as_view(), name='show_all'),
-    path('create', views.create, name='create'),
-    path('<int:pk>/', include([
-        path('edit', views.HumanEditView.as_view(), name='edit'),
-        path('delete', views.HumanDeleteView.as_view(), name='delete'),
-    ])),
+    path("", views.HumanListView.as_view(), name="show_all"),
+    path("create", views.create, name="create"),
+    path(
+        "<int:pk>/",
+        include(
+            [
+                path("edit", views.HumanEditView.as_view(), name="edit"),
+                path("delete", views.HumanDeleteView.as_view(), name="delete"),
+            ]
+        ),
+    ),
 ]

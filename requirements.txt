@@ -9,3 +9,9 @@ psycopg2-binary==2.9.3
 
 # For humans generating.
 faker==13.14.0
+
+# [code_style]-[BEGIN]
+pre-commit==2.20.0
+# Formatter. Apply codestyle.
+black==22.6.0
+# [code_style]-[END]
