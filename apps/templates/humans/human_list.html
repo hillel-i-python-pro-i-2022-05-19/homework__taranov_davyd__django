@@ -5,7 +5,7 @@
         <button class="btn btn-primary">Go to human creation</button>
     </a>
     <ol>
-        {% for human in humans %}
+        {% for human in object_list %}
             <li style="margin: 10px 0; ">
                 <div style="max-width: 300px; display: flex; align-items: center; justify-content: space-between">
                     <span>{{ human.name }} - {{ human.age }}</span>
