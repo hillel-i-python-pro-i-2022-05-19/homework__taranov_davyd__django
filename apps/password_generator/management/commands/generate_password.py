@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = "Generate Password"
 
     def add_arguments(self, parser: CommandParser):
-        parser.add_argument('length', type=int)
+        parser.add_argument("length", type=int)
 
     def handle(self, *args, **options):
         print(generate_password(password_length=options["length"]))

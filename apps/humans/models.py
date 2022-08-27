@@ -5,12 +5,12 @@ from django.urls import reverse_lazy
 
 class ColorsChoices(models.TextChoices):
     BLACK = "black", "black"
-    WHITE = 'white', "White"
+    WHITE = "white", "White"
     RED = "red", "Red"
 
 
 class Color(models.Model):
-    name = models.CharField('Name', help_text='Name of color', max_length=35)
+    name = models.CharField("Name", help_text="Name of color", max_length=35)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -20,23 +20,20 @@ class Color(models.Model):
 
 # Create your models here.
 class Human(models.Model):
-    name = models.CharField('Name', help_text='It is name of human', max_length=200)
-    age = models.PositiveIntegerField('Age', help_text='How old this human', validators=[MaxValueValidator(150)])
+    name = models.CharField("Name", help_text="It is name of human", max_length=200)
+    age = models.PositiveIntegerField("Age", help_text="How old this human", validators=[MaxValueValidator(150)])
     favourite_color = models.CharField(
-        "Favourite color", max_length=35,
+        "Favourite color",
+        max_length=35,
         choices=ColorsChoices.choices,
         default=ColorsChoices.WHITE,
     )
     favourite_color_by_foreign = models.ForeignKey(
-        Color,
-        related_name='humans_related_by_foreign_key',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True)
+        Color, related_name="humans_related_by_foreign_key", on_delete=models.SET_NULL, null=True, blank=True
+    )
     favourite_color_many_to_many = models.ManyToManyField(
         Color,
-        related_name='humans_related_many_to_many_items',
-
+        related_name="humans_related_many_to_many_items",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -48,7 +45,7 @@ class Human(models.Model):
     __repr__ = __str__
 
     def get_absolute_url(self):
-        return reverse_lazy('humans:edit', kwargs={"pk": self.pk})
+        return reverse_lazy("humans:edit", kwargs={"pk": self.pk})
 
 
 class SuperHuman(Human):
