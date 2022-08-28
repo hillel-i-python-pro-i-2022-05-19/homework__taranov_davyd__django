@@ -1,16 +1,17 @@
+from django.conf import settings
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.urls import reverse_lazy
 
 
 class ColorsChoices(models.TextChoices):
-    BLACK = "black", "black"
+    BLACK = "black", "Black"
     WHITE = "white", "White"
     RED = "red", "Red"
 
 
 class Color(models.Model):
-    name = models.CharField("Name", help_text="Name of color", max_length=35)
+    name = models.CharField("Name", help_text="Name of color", max_length=200)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -18,22 +19,35 @@ class Color(models.Model):
     __repr__ = __str__
 
 
-# Create your models here.
 class Human(models.Model):
     name = models.CharField("Name", help_text="It is name of human", max_length=200)
-    age = models.PositiveIntegerField("Age", help_text="How old this human", validators=[MaxValueValidator(150)])
+    age = models.PositiveSmallIntegerField("Age", help_text="How old this human", validators=[MaxValueValidator(150)])
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+
     favourite_color = models.CharField(
         "Favourite color",
-        max_length=35,
+        max_length=32,
         choices=ColorsChoices.choices,
         default=ColorsChoices.WHITE,
     )
-    favourite_color_by_foreign = models.ForeignKey(
-        Color, related_name="humans_related_by_foreign_key", on_delete=models.SET_NULL, null=True, blank=True
+
+    favourite_color_by_foreign_key = models.ForeignKey(
+        Color,
+        related_name="humans_related_by_foreign_key",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
+
     favourite_color_many_to_many = models.ManyToManyField(
         Color,
-        related_name="humans_related_many_to_many_items",
+        related_name="humans_related_by_many_to_many",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -43,6 +57,9 @@ class Human(models.Model):
         return f"{self.name} - {self.age}"
 
     __repr__ = __str__
+
+    # def __repr__(self) -> str:
+    #     return str(self)
 
     def get_absolute_url(self):
         return reverse_lazy("humans:edit", kwargs={"pk": self.pk})

@@ -41,11 +41,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS = [
-    "apps.base",
-    "apps.password_generator",
-    "apps.humans",
-]
+LOCAL_APPS = ["apps.base", "apps.users", "apps.password_generator", "apps.humans", "apps.sessions_example"]
 
 THIRD_PARTY_APPS = []
 
@@ -62,6 +58,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+
+AUTH_USER_MODEL = "users.User"
+
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
 
 TEMPLATES = [
     {
@@ -93,12 +94,6 @@ DATABASES = {
         )
     ),
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': str(BASE_DIR.joinpath('db', 'db.sqlite3')),
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -19,6 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path("password-generator/", include("apps.password_generator.urls")),
     path("humans/", include("apps.humans.urls")),
+    path("sessions-example/", include("apps.sessions_example.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("users/", include("apps.users.urls")),
     path("admin/", admin.site.urls),
     path("", include("apps.base.urls")),
 ]
