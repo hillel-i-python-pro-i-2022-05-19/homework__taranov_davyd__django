@@ -11,7 +11,7 @@ def create(
     request: HttpRequest,
 ) -> HttpResponse:
     if request.POST:
-        form = HumanForm(request.POST)
+        form = HumanForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.info(request, "Human created")

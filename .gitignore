@@ -243,3 +243,7 @@ docker-compose.override.yml
 # For SQLite DB.
 db/**
 !db/.gitkeep
+
+# For Media files.
+media/**
+!media/.gitkeep

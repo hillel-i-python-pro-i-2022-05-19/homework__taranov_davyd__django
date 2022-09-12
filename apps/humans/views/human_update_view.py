@@ -6,8 +6,5 @@ from apps.humans.models import Human
 
 class HumanEditView(UpdateView):
     model = Human
-    fields = [
-        "name",
-        "age",
-    ]
+    fields = ["name", "age", "avatar"]
     success_url = reverse_lazy("humans:show_all")
