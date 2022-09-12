@@ -1,5 +1,7 @@
 {% extends "_helpers/_base.html" %}
+{% load static %}
 
 {% block body %}
     <p>Welcome</p>
+    <img class="img" src="{% static 'images/img.png' %}" alt="image"/>
 {% endblock %}

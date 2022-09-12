@@ -8,6 +8,9 @@
         {% for human in object_list %}
             <li style="margin: 10px 0; ">
                 <div style="max-width: 300px; display: flex; align-items: center; justify-content: space-between">
+                    {% if human.avatar %}
+                        <img class="human-avatar" src="{{ human.avatar.url }}" alt="{{ human.name }}"/>
+                    {% endif %}
                     <span>{{ human.name }} - {{ human.age }}</span>
                     <a href="{% url 'humans:edit' pk=human.pk %}">
                         <button class="btn btn-primary">Edit</button>
