@@ -41,7 +41,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-LOCAL_APPS = ["apps.base", "apps.users", "apps.password_generator", "apps.humans", "apps.sessions_example"]
+LOCAL_APPS = ["apps.base", "apps.users", "apps.password_generator", "apps.humans", "apps.middleware_logger"]
 
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -58,6 +58,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "apps.middleware_logger.middleware.SimpleLoggingMiddleware",
+    "apps.middleware_logger.middleware.SimpleLoggingMiddleware2",
 ]
 
 ROOT_URLCONF = "core.urls"
